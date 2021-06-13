@@ -1,0 +1,38 @@
+{
+    "manifest_version": 2,
+    "name": "fOoOcus",
+    "version": "1.0",
+    "description": "Your personal AI study partner",
+    "icons":
+	{
+		"48": "img/fOoOcus.png"
+    },
+    "background": {
+		"scripts": ["background.js"],
+		"persistent": true
+	},
+    "browser_action": {
+		"default_icon": "img/fOoOcus.png",	
+		"default_title": "fOoOcus",
+		"default_popup": "popup.html"
+	},
+	"content_scripts": [ {
+		"js": [ "inject.js" ],
+		"matches": [ "http://*/*", "https://*/*" ],
+		"run_at": "document_start"
+	 } ],
+	"permissions": [
+		"webRequest", "webRequestBlocking",
+		"contextMenus",
+		"tabs",
+		"http://*/*",
+        "https://*/*",
+        "alarms",
+        "tabs",
+        "storage",
+		"background"
+	],
+	"content_security_policy": "script-src 'self' 'unsafe-eval' https://cdn.staticfile.org/echarts/4.3.0/echarts.min.js https://cdn.bootcss.com https://cdn.jsdelivr.net/npm/vue@2.6.11 https://cdn.bootcdn.net/ajax/libs/element-ui/2.13.2/index.js https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js; object-src 'self'"
+  
+	
+}

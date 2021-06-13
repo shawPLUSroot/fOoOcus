@@ -1,0 +1,132 @@
+@import url("//fonts.googleapis.com/css?family=Josefin+Slab:400,700");
+@import url("https://fonts.googleapis.com/css?family=Lato");
+* {
+  margin: 0;
+  padding: 0;
+  transition: all ease-in-out 0.7s;
+}
+
+body {
+  overflow: hidden;
+  font-family: "Myriad Pro", Arial, sans-serif;
+}
+
+h1 {
+  font-family: "Josefin Slab", cursive;
+  position: absolute;
+  top: 10%;
+  left: 10%;
+  font-size: 40px;
+  animation: fadeInLeft 0.5s ease-in-out;
+  -webkit-animation: fadeInLeft 0.5s ease-in-out;
+}
+
+button {
+  border: 0;
+  outline: none !important;
+  background-image: -webkit-linear-gradient(top, #a8edea, #fed6e3);
+  -webkit-box-shadow: 0px 5px 5px -3px #fff1eb;
+  text-decoration: none;
+}
+
+button:hover,
+button:active,
+.selected {
+  background-image: -webkit-linear-gradient(-100deg, #5ee7df 50%, #b490ca 100%);
+}
+
+.container {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: url("http://pic1.win4000.com/wallpaper/e/59929ffe3aff8.jpg") no-repeat;
+  background-size: 100% 100%;
+  -webkit-transition: background-image 0.4s ease-in-out;
+  -webkit-backface-visibility: hidden;
+  -webkit-transform-style: preserve-3d;
+}
+
+#sounds {
+  position: absolute;
+  display: inline-block;
+  width: 100%;
+  height: auto;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: 0;
+}
+#sounds button {
+  font-size: 25px;
+  font-family: "Josefin Slab";
+  width: 20%;
+  height: 40px;
+  border-right: 2px solid #e4efe9;
+}
+
+#clock {
+  width: 300px;
+  height: 180px;
+  border-radius: 5px;
+  background: rgba(242, 242, 242, 0.7);
+  text-align: center;
+  -webkit-box-shadow: -2px -2px 8px #777, 2px 2px 12px #777;
+  box-shadow: -2px -2px 8px #777, 2px 2px 12px #777;
+  animation: lightSpeedIn 0.5s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+#clock #timer {
+  font-size: 60px;
+}
+#clock #countdown {
+  padding-top: 8%;
+}
+
+#clock:hover {
+  -webkit-box-shadow: -4px -4px 10px #bfbfbf, 4px 4px 16px #bfbfbf;
+  box-shadow: -4px -4px 10px #fff, 4px 4px 16px #fff;
+}
+
+#controlls {
+  text-align: center;
+}
+#controlls button {
+  margin-top: 5%;
+  width: 18%;
+  height: 30px;
+  transition: transform 0.3s ease-in-out;
+}
+#controlls button:hover {
+  transform: scale(1.1);
+}
+
+#options {
+  width: 300px;
+  height: auto;
+  margin-top: 20px;
+  text-align: center;
+  font-family: "Lato";
+  animation: lightSpeedIn 0.8s ease-in-out;
+}
+#options #session {
+  margin-bottom: 4px;
+}
+#options input {
+  width: 33px;
+  outline: none;
+  border: 1.5px;
+  border-radius: 3px;
+  border-style: solid;
+  padding: 2px auto;
+}
+#options i:hover {
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.break {
+  margin-right: 3px;
+}

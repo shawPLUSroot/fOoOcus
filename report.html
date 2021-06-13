@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>fOoOcus</title>
+    <meta charset="UTF-8" />
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">
+    <link href="https://cdn.bootcdn.net/ajax/libs/element-ui/2.13.2/theme-chalk/index.css" rel="stylesheet">
+    <script src="https://cdn.staticfile.org/echarts/4.3.0/echarts.min.js"></script>
+    <style lang="less">
+        body{
+            margin: 0px;
+        }
+        canvas{
+            position: absolute;
+            z-index: 100000;
+        }
+        .container {
+            height: 100vh;
+            display: flex;
+        }
+        .container .sidebar{
+            height: 100vh;
+            flex:1;
+            background-color: #F4F5F7;
+        }
+        .container .sidebar .el-menu{
+            top: 50%;
+            transform: translate( 0,-50%);
+            background-color: transparent;
+            margin-left: 30px;
+        }
+        .container .sidebar .el-menu .el-menu-item{
+            margin-bottom: 20px;
+            border-radius: 20px 0 0 20px;
+            color: #42536e;
+        }
+        .el-menu-item:focus, .el-menu-item:hover {
+            outline: 0;
+            background-color: #dee1e5;
+        }
+
+        .main-contain1{
+            flex:8;
+        }
+        .main-contain1 .reportOfConcentration{
+            margin-top: 35px;
+            height: 12vh;
+            width: 100%;
+            align-self: center;
+            text-align: center;
+            font-family: 'Quicksand', sans-serif;
+            color:#3a5a73;
+            font-size: 35px;
+        }
+        .el-row {
+            margin-bottom: 20px;
+            align-self: center;
+        }
+
+        
+        
+
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <div class="container">
+            <div class="sidebar">
+                <el-menu>
+                    <el-menu-item index="1" id="homepage">
+                        <i class="el-icon-location"></i>
+                        <span slot="title">Homepage</span>
+                    </el-menu-item>
+                    <el-menu-item index="2" id="report">
+                        <i class="el-icon-menu"></i>
+                        <span slot="title">Report</span>
+                    </el-menu-item>
+                    <el-menu-item index="3" id="faq">
+                        <i class="el-icon-document"></i>
+                        <span slot="title">FAQ</span>
+                    </el-menu-item>
+                    <el-menu-item index="4" id="website">
+                        <i class="el-icon-setting"></i>
+                        <span slot="title">Website Blocker</span>
+                    </el-menu-item>
+                </el-menu>
+            </div>
+            <div class="main-contain1">
+                <div class="reportOfConcentration">
+                    Your Concentration Report
+                </div>
+                <el-row :gutter="120">
+                    <el-col :span="10">
+                        <div id="main" style="width: 600px;height:400px;"></div>
+                    </el-col>
+                    <el-col :span="14">
+                        <div style="width: 400px;height:400px;color: #828385;text-align:justify;font-size: 15px;margin-left: 50% 50%;align-self: center;"> 
+                            <el-row :gutter="10">
+                                <el-col><span> Hey I'm your study partner, this is a report according to the daily activity we have detected after having your permission</span></el-col>
+                              </el-row>
+                              <el-row :gutter="10">
+                                <el-col :span="13"><span>We found you start studying at</span></el-col>
+                                <el-col :span="4"><span style="text-align:center;color:rgb(93, 122, 154)" id="startStudyTime">8:00</span></el-col>
+                              </el-row>
+                              <el-row :gutter="10">
+                                <el-col :span="13"><span>And then you stop studying at</span></el-col>
+                                <el-col :span="4"><span style="text-align:center;color:rgb(93, 122, 154)"   id="stopStudyTime">20:00</span></el-col>
+                              </el-row>
+                              <el-row :gutter="10">
+                                <el-col :span="3"><span>From</span></el-col>
+                                <el-col :span="4"><span style="text-align:center;color:rgb(93, 122, 154)"  id="slot1">12:00</span></el-col>
+                                <el-col :span="2"><span>to</span></el-col>
+                                <el-col :span="4"><span style="text-align:center;color:rgb(93, 122, 154)"  id="slot2">14:00</span></el-col>
+                                <el-col :span="16"><span>You study very hard during this time!</span></el-col>
+                              </el-row>
+                              <el-row :gutter="10">
+                                <el-col><span>The total time you spent on study is approximately</span></el-col>
+                                <el-col><span style="text-align:center ;font-size: 15px;color:rgb(93, 122, 154)" id="totalTime">320 mintues</span></el-col>
+                              </el-row>
+                              <el-row :gutter="10">
+                                <el-col :span="13"><span>Most time your emotion is</span></el-col>
+                                <el-col :span="4"><span style="text-align:center;color:rgb(93, 122, 154)"   id="emotion">neutral</span></el-col>
+                              </el-row>
+                              <el-row :gutter="10">
+                                <el-col><span style="text-align:center" id="suggestion">Do you want some suggestions to imporve your study efficiency? If so, You can click the "Advise" button to update our advice here :P</span></el-col>
+                              </el-row>
+                              <el-row :gutter="10">
+                                <el-col><span style="text-align:center" id="totalTime">Presented by fOoOcus</span></el-col>
+                              </el-row>
+                        </div>
+                    </el-col>
+                </el-row>
+                
+                <el-row style="justify-content: center; 
+                align-items: center; 
+                display: -webkit-flex;">
+                    <el-button round id="adviseButton">Advise</el-button>
+                </el-row>
+                <el-row style="justify-content: center; 
+                align-items: center; 
+                display: -webkit-flex;">
+                    <el-button round id="reportButton">Generate Report</el-button>
+                </el-row>
+            </div>
+
+            
+    </div>
+</body>
+<!-- import Vue before Element -->
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.11"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/element-ui/2.13.2/index.js"></script>
+<script src="report.js"></script>
+<!-- import JavaScript -->
+</html>

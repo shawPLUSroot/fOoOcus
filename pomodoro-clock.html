@@ -1,0 +1,74 @@
+<!-- extension的主界面 -->
+<!-- 前端部分TODO LIST -->
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>fOoOcus</title>
+    <meta charset="UTF-8" />
+    <link href="https://cdn.bootcdn.net/ajax/libs/element-ui/2.13.2/theme-chalk/index.css" rel="stylesheet">
+    <link rel="shortcut icon" href="img/favicon.ico" />
+    <link rel="stylesheet" href="pomodoro-clock.css"/>
+
+</head>
+
+<body>
+    <div id="app">
+        <div id="pomodoro-container">
+            <div id="pomodoro-clock">
+                <div id="pomodoro-main">
+                    <div class="pomodoro-timer"></div>
+                </div>
+            </div>
+            <div id="pomodoro-info">
+                <div id="pomodoro-clock-controller">
+                    <button id="pomodoro-start">
+                        <i class="el-icon-video-play" id="play-icon"></i>
+                        <i class="el-icon-video-pause" id="pause-icon"></i>
+                    </button>
+                    <button id="pomodoro-stop" pomodoro-clock>
+                        <i class="el-icon-refresh-right"></i>
+                    </button>
+                </div>
+                <div id="pomodoro-clock-actions">
+                    <div class="duration">
+                        <h3>DURATION</h3>
+                        <div class="pomodoro-input">
+                        <label>Work</label>
+                        <input
+                            name="input-work-duration"
+                            id="input-work-duration"
+                            type="number"
+                        />
+                        </div>
+                        <div class="pomodoro-input">
+                        <label>Break</label>
+                            <input
+                            name="input-break-duration"
+                            id="input-break-duration"
+                            type="number"
+                            />
+                        </div>
+                    </div>
+        
+                    <div class="task">
+                        <h3>ADD NEW TASK</h3>
+                        <input
+                            type="text"
+                            id="pomodoro-clock-task"
+                            placeholder="Enter task → Start Timer → End Timer → Record!"
+                        />
+                        <h3>SESSIONS</h3>
+                        <ul id="pomodoro-sessions"></ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.11"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/element-ui/2.13.2/index.js"></script>
+<script src="progressBar.js"></script>
+<script src="pomodoro-clock.js"></script>
+</html>

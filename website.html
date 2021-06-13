@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>fOoOcus</title>
+    <meta charset="UTF-8" />
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">
+    <link href="https://cdn.bootcdn.net/ajax/libs/element-ui/2.13.2/theme-chalk/index.css" rel="stylesheet">
+    <style lang="less">
+        body{
+            margin: 0px;
+        }
+        canvas{
+            position: absolute;
+            z-index: 100000;
+        }
+        .container {
+            height: 100vh;
+            display: flex;
+        }
+        .container .sidebar{
+            height: 100vh;
+            flex:1;
+            background-color: #F4F5F7;
+        }
+        .container .sidebar .el-menu{
+            top: 50%;
+            transform: translate( 0,-50%);
+            background-color: transparent;
+            margin-left: 30px;
+        }
+        .container .sidebar .el-menu .el-menu-item{
+            margin-bottom: 20px;
+            border-radius: 20px 0 0 20px;
+            color: #42536e;
+        }
+        .el-menu-item:focus, .el-menu-item:hover {
+            outline: 0;
+            background-color: #dee1e5;
+        }
+
+        .main-contain1{
+            flex:8;
+        }
+        .main-contain1 .reportOfConcentration{
+            margin-top: 220px;
+            height: 20vh;
+            width: 100%;
+            align-self: center;
+            text-align: center;
+            font-family: 'Quicksand', sans-serif;
+            color:#3a5a73;
+            font-size: 70px;
+        }
+        .el-row {
+            margin-bottom: 20px;
+            align-self: center;
+        }
+
+        
+        
+
+    </style>
+</head>
+<body>
+    <div id="app">
+        <div class="container">
+            <div class="sidebar">
+                <el-menu>
+                    <el-menu-item index="1" id="homepage">
+                        <i class="el-icon-location"></i>
+                        <span slot="title">Homepage</span>
+                    </el-menu-item>
+                    <el-menu-item index="2" id="report">
+                        <i class="el-icon-menu"></i>
+                        <span slot="title">Report</span>
+                    </el-menu-item>
+                    <el-menu-item index="3" id="faq">
+                        <i class="el-icon-document"></i>
+                        <span slot="title">FAQ</span>
+                    </el-menu-item>
+                    <el-menu-item index="4">
+                        <i class="el-icon-setting"></i>
+                        <span slot="title">Website Blocker</span>
+                    </el-menu-item>
+                </el-menu>
+            </div>
+            <div class="main-contain1">
+                <div class="reportOfConcentration">
+                    Website Blocker
+                </div>
+                <el-row :gutter="2" style="justify-content: center; 
+                align-items: center; 
+                display: -webkit-flex; margin-bottom: 35px;">
+                    <el-col :span="10" style="margin-right: 20px;">
+                        <el-input id="site" v-model="input" placeholder="Type an url to add or remove from the black list"></el-input>
+                    </el-col>
+                    <el-col :span="1">
+                        <el-button id="addURL" type="success" icon="el-icon-check" circle></el-button>
+                    </el-col>
+                    <el-col :span="1">
+                        <el-button id="removeURL" type="danger" icon="el-icon-delete" circle></el-button>
+                    </el-col>
+                </el-row>
+                <el-row style="justify-content: center; 
+                align-items: center; 
+                display: -webkit-flex;">
+                    <el-button round id="blockAll">Block All</el-button>
+                </el-row>
+                <el-row style="justify-content: center; 
+                align-items: center; 
+                display: -webkit-flex;">
+                    <el-button round id="blockPart">Block BlackList Websites</el-button>
+                </el-row>
+            </div>
+    </div>
+    </div>
+    
+</body>
+<!-- import Vue before Element -->
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.11"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/element-ui/2.13.2/index.js"></script>
+<script src="website.js"></script>
+<script src="background.js"></script>
+<!-- import JavaScript -->
+</html>

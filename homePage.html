@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>fOoOcus</title>
+    <meta charset="UTF-8" />
+    <link href="https://cdn.bootcdn.net/ajax/libs/element-ui/2.13.2/theme-chalk/index.css" rel="stylesheet">
+    <script src="progressBar.js"></script>
+    <script defer src="face-api.js"></script>
+    <script defer src="homePage.js"></script>
+    <style lang="less">
+        body{
+            margin: 0px;
+        }
+        canvas{
+            position: absolute;
+            z-index: 100000;
+        }
+        .container {
+            height: 100vh;
+            display: flex;
+            /* text-align: center; */
+        }
+        .container .sidebar{
+            height: 100vh;
+            flex:1;
+            background: -webkit-linear-gradient(to right,#214e79,#ffe0ec);  /* Chrome 10-25, Safari 5.1-6 */
+            background: linear-gradient(to right,#214e79,#ffe0ec); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+        }
+        .container .sidebar .el-menu{
+            top: 50%;
+            transform: translate( 0,-50%);
+            background-color: transparent;
+            margin-left: 30px;
+            border-right:0;
+        }
+        .container .sidebar .el-menu .el-menu-item{
+            margin-bottom: 20px;
+            border-radius: 20px 0 0 20px;
+            color:#ffe3ed;
+            font-size: 0.7rem;
+        }
+        .el-icon-location:before,.el-icon-menu:before,.el-icon-document:before,.el-icon-setting:before{
+            color: #fff1f6;
+        }
+
+        .el-menu-item.is-active,.el-menu-item:focus,.el-menu-item:hover{
+            background: -webkit-linear-gradient(to right,#032647,#ffe0ec); 
+            background: linear-gradient(to right,#032647,#ffe0ec);
+        }
+
+
+        .main-contain1{
+            flex:11;
+            background: -webkit-linear-gradient(to left,#214e79,#ffffff,#ffe0ec);  /* Chrome 10-25, Safari 5.1-6 */
+            background: linear-gradient(to left,#214e79,#ffffff,#ffe0ec); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+        }
+
+        .main-contain1 .main-contain-top{
+            margin-top: 40px;
+            margin-bottom: 20px;
+            height: 56vh;
+            width: 100%;
+            display: -webkit-flex;
+        }
+        .main-contain1 .main-contain-bottom{
+            height: 20vh; 
+            display: -webkit-flex;
+        }
+
+        .main-contain1 .button-group1{
+            justify-content: center; 
+            align-items: center; 
+            display: -webkit-flex;
+            margin-bottom: 25px;
+        }
+        .main-contain1 .button-group{ 
+            justify-content: center; 
+            align-items: center; 
+            display: -webkit-flex;
+            margin: 0 auto;
+        }
+
+        #stopMonitor {
+            background: -webkit-linear-gradient(to right#ffe0ec,#0c375f,); 
+            background: linear-gradient(to right,#ffe0ec,#0c375f); 
+            color: #fff8fb;
+            border: none;
+            font-size: 0.7rem;
+            font-weight: 600;
+        }
+        
+
+        #startMonitor {
+            background: -webkit-linear-gradient(to right, #0c375f,#ffe0ec);  
+            background: linear-gradient(to right, #0c375f, #ffe0ec); 
+            border: none;
+            color: #fff8fb;
+            font-size: 0.7rem;
+            font-weight: 600;
+            margin-right: 40px;
+        }
+        .el-button.is-disabled, .el-button.is-disabled:focus, .el-button.is-disabled:hover {
+            color: #0c375f;
+            font-weight: 800;
+            cursor: not-allowed;
+            background-image: none;
+            background-color: TRANSPARENT;
+            border-color: TRANSPARENT;
+        }
+        .el-button {
+        background: transparent;
+        border: 5px solid transparent;
+        color: #0c375f;
+        font-weight: 800;
+        }
+        .el-button:focus,.el-button:hover {
+        background: transparent;
+        border: 5px solid #0c375f;
+        color: #0c375f;
+        font-weight: 800;
+        }
+        .button-group1{
+            margin-top: 10vh;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <div class="container">
+            <div class="sidebar">
+                <el-menu default-active="1">
+                    <el-menu-item index="1" >
+                        <i class="el-icon-location"></i>
+                        <span slot="title">Homepage</span>
+                    </el-menu-item>
+                    <el-menu-item index="2" id="report">
+                        <i class="el-icon-menu"></i>
+                        <span slot="title">Report</span>
+                    </el-menu-item>
+                    <el-menu-item index="3" id="faq">
+                        <i class="el-icon-document"></i>
+                        <span slot="title">FAQ</span>
+                    </el-menu-item>
+                    <el-menu-item index="4" id="website">
+                        <i class="el-icon-setting"></i>
+                        <span slot="title">Website Blocker</span>
+                    </el-menu-item>
+                </el-menu>
+            </div>
+            <div class="main-contain1">
+                <div class="main-contain-top">
+                    <div class="putUserImage">
+                        <img src="img/Focus.png" style="width: 30%;justify-content: center; 
+                        align-items: center; 
+                        display: -webkit-flex;margin: 0 auto;" id="studyStatus">
+                    </div>
+                </div>
+
+                <div class="button-group1">
+                    <el-button round disabled>❤ Other M O D E ❤ </el-button> 
+                    <el-tooltip content="自由自在模式：自由计时的快乐学习~" placement="top">
+                        <el-button round id="free">🍌自由自在</el-button>
+                    </el-tooltip>
+                    <el-tooltip content="生命有限模式：设定总时间" placement="top">
+                        <el-button round id="life">⏰生命有限</el-button>
+                    </el-tooltip>
+                    <el-tooltip content="誓不罢休模式：设定总目标" placement="top">
+                        <el-button round id="chong">👩‍💻誓不罢休</el-button>
+                    </el-tooltip>
+                    <el-tooltip content="悬梁刺股模式：强制锁定，适用于线上测试、考试等情况" placement="top">
+                        <el-button round id="boom">🤯悬梁刺股</el-button>
+                    </el-tooltip>
+                </div>
+                <div class="button-group">
+                    <el-button type="primary" round id="startMonitor">Start Monitor</el-button>
+                    <el-button round id="stopMonitor">Stop</el-button>
+
+                </div>
+            </div>
+    </div>
+</body>
+<!-- import Vue before Element -->
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.11"></script>
+<!-- import JavaScript -->
+<script src="https://cdn.bootcdn.net/ajax/libs/element-ui/2.13.2/index.js"></script>
+</html>
